@@ -1,0 +1,20 @@
+<style type='text/css'>
+  table { border: solid 1px black }
+  th,td { border:solid 1px black; margin:0; padding:10px;}
+</style>
+<h1>Recorded gets:</h1>
+
+<table cellspacing='0' cellpadding='0'>
+  <tr>
+    <th>Params</th>
+    <th>IP Address</th>
+    <th>Timestamp</th>
+  </tr>
+  <% @recorded_gets.each do |recorded_get| %>
+    <tr>
+      <td><%= recorded_get.content %></td>
+      <td><%= recorded_get.ip_address %></td>
+      <td><%= recorded_get.created_at %></td>
+    </tr>
+  <% end %>
+</table>
