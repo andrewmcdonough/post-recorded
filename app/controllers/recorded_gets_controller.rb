@@ -5,7 +5,11 @@ class RecordedGetsController < ApplicationController
     @recorded_get = RecordedGet.new(content: params.to_s,
                                       ip_address: request.remote_ip)
     if @recorded_get.save
-      send_data(Base64.decode64("R0lGODlhAQABAPAAAAAAAAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="), :type => "image/gif", :disposition => "inline")
+      if params[:pixel]
+        send_data(Base64.decode64("R0lGODlhAQABAPAAAAAAAAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="), :type => "image/gif", :disposition => "inline")
+      else
+        render text: "record"
+      end
     else
       render text: "fail"
     end
